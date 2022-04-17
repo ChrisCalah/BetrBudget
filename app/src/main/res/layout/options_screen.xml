@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="fitCenter"
+            android:onClick="homeNavigate"
             app:srcCompat="@android:drawable/btn_star_big_off"
             tools:srcCompat="@drawable/homebutton" />
 

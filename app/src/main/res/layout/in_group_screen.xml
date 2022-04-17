@@ -23,6 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="homeNavigate"
             android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/btn_star_big_off"
             tools:srcCompat="@drawable/homebutton" />
