@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HomeButton">
+        app:layout_constraintTop_toBottomOf="@+id/HomeButton"
+        tools:ignore="NotSibling">
 
         <ImageButton
             android:id="@+id/HomeButton"
@@ -26,8 +27,7 @@
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:onClick="homeNavigate"
-            app:srcCompat="@android:drawable/btn_star_big_off"
-            tools:srcCompat="@drawable/homebutton" />
+            app:srcCompat="@drawable/homebutton" />
 
         <ImageButton
             android:id="@+id/GroupButton"
@@ -36,9 +36,8 @@
             android:layout_weight="1"
             android:onClick="groupNavigate"
             android:scaleType="fitCenter"
-            app:srcCompat="@android:drawable/ic_dialog_email"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/groupbutton" />
+            app:srcCompat="@drawable/groupbutton" />
 
         <ImageButton
             android:id="@+id/ReportButton"
@@ -47,9 +46,8 @@
             android:layout_weight="1"
             android:onClick="reportNavigate"
             android:scaleType="fitCenter"
-            app:srcCompat="@android:drawable/ic_menu_view"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/reportbutton" />
+            app:srcCompat="@drawable/reportbutton" />
 
         <ImageButton
             android:id="@+id/groupBtn"
@@ -58,8 +56,7 @@
             android:layout_weight="1"
             android:onClick="expenseNavigate"
             android:scaleType="fitCenter"
-            app:srcCompat="@android:drawable/ic_menu_myplaces"
-            tools:srcCompat="@drawable/expensebutton" />
+            app:srcCompat="@drawable/expensebutton" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -68,9 +65,8 @@
             android:layout_weight="1"
             android:onClick="settingsNavigate"
             android:scaleType="fitCenter"
-            app:srcCompat="@android:drawable/ic_menu_preferences"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/settingsbutton" />
+            app:srcCompat="@drawable/settingsbutton" />
     </LinearLayout>
 
 
