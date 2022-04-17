@@ -31,7 +31,7 @@ public class Group extends AppCompatActivity {
         return ownerID;
     }
 
-    public void addExpense(double amount, String date, String name, String desc) {
-        expenseList.add(new Expense(amount, date, name, desc));
+    public void addExpense(Expense newExp) {
+        expenseList.add(newExp);
     }
 }

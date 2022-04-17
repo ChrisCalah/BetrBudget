@@ -6,14 +6,12 @@ public class Expense {
     public double amount;
     public String date;
     public String name;
-    public String description;
 
     public Expense(double expenseAmount, String dateOfExpense,
-                   String nameOfExpense, String expenseDesc)
+                   String nameOfExpense)
     {
         amount = expenseAmount;
         date = dateOfExpense;
         name = nameOfExpense;
-        description = expenseDesc;
     }
 }

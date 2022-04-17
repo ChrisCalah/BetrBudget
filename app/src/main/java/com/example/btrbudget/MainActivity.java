@@ -25,9 +25,15 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -52,6 +58,7 @@ import java.util.*;
 public class MainActivity extends AppCompatActivity {
 
     //create PieChart instance/object
+    private Group thisGroup = new Group(1234);;
     private PieChart pieChart;
     private UserSettings settings = new UserSettings();
 
@@ -259,32 +266,24 @@ public class MainActivity extends AppCompatActivity {
         // set the content view
         setContentView(R.layout.in_group_screen);
 
-        // initialize a new group
-        Group thisGroup = new Group(1234);
-
-        thisGroup.addExpense(15, "4/16/2022", "Mcdoonals Borger", "yumm.");
-        thisGroup.addExpense(100, "3/16/2022", "Hooker", "yumm.");
-        thisGroup.addExpense(159.23, "2/20/2022", "Cocaine", "yumm.");
-        thisGroup.addExpense(20030, "1/20/2022", "TESLA MOTHER FUCKER", "yumm.");
-
         for(index = 0; index < thisGroup.expenseList.size(); index++)
         {
-            TextView text = new TextView(this);
             if (index % 2 == 0)
             {
-                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.GRAY, text);
+                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.GRAY);
             }
             else
             {
-                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.LTGRAY, text);
+                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.LTGRAY);
             }
         }
     }
 
-    public void createExpenseXMLElement(Expense expense, int color, TextView text)
+    public void createExpenseXMLElement(Expense expense, int color)
     {
+        TextView text = new TextView(this);
         LinearLayout groupScreen = (LinearLayout) findViewById(R.id.groupExpenses);
-        text.setText(expense.name + " - " + expense.amount + " - " + expense.date);
+        text.setText(expense.name + " - $" + expense.amount + " - " + expense.date);
         text.setBackgroundColor(color);
         text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         text.setTextSize(18);
@@ -292,11 +291,47 @@ public class MainActivity extends AppCompatActivity {
         groupScreen.addView(text);
     }
 
-    public void AddExpense()
-    {
-        Context ctx = getApplicationContext();
-        Expenses expnses = new Expenses(ctx);
+    public void onButtonShowPopupWindowClick(View view) {
 
-        expnses.addExpense();
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.expense_popup, (ViewGroup) findViewById(R.id.popup_layout));
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // show the popup window
+        // which view you pass in doesn't matter, it is only used for the window tolken
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+
+        Button confirm = (Button)popupView.findViewById(R.id.confirmExpense);
+
+        // create an expense when confirm button pressed
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editName = (EditText)popupView.findViewById(R.id.editName);
+                EditText editAmt = (EditText)popupView.findViewById(R.id.editAmount);
+                EditText editDate = (EditText)popupView.findViewById(R.id.editDate);
+                Expense newExp = new Expense(Double.parseDouble(editAmt.getText().toString()),
+                        editDate.getText().toString(), editName.getText().toString());
+                thisGroup.addExpense(newExp);
+
+                if (thisGroup.expenseList.size() % 2 == 0)
+                {
+                    createExpenseXMLElement(newExp, Color.GRAY);
+                }
+                else
+                {
+                    createExpenseXMLElement(newExp, Color.LTGRAY);
+                }
+                popupWindow.dismiss();
+            }
+        });
     }
 }
