@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="673dp"
         android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/ToolBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,42 +58,48 @@
     </ScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ToolBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="179dp"
-        android:background="#9D12F3"
+        android:background="#172413"
         android:orientation="horizontal"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5">
+        app:layout_constraintTop_toBottomOf="@+id/HomeButton">
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/HomeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_star_big_off" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/btn_star_big_off"
+            tools:srcCompat="@drawable/homebutton" />
 
         <ImageButton
-            android:id="@+id/reportBtn"
+            android:id="@+id/GroupButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="groupNavigate"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/ic_dialog_email"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/groupbutton" />
 
         <ImageButton
-            android:id="@+id/expenseBtn"
+            android:id="@+id/ReportButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="reportNavigate"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/ic_menu_view"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/reportbutton" />
 
         <ImageButton
             android:id="@+id/groupBtn"
@@ -101,7 +107,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="expenseNavigate"
-            app:srcCompat="@android:drawable/ic_menu_myplaces" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_menu_myplaces"
+            tools:srcCompat="@drawable/expensebutton" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -109,8 +117,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="settingsNavigate"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/ic_menu_preferences"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/settingsbutton" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
