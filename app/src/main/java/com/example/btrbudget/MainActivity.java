@@ -27,7 +27,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -41,18 +43,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -211,14 +205,6 @@ public class MainActivity extends AppCompatActivity {
         Button saveBtn = findViewById(R.id.saveButton);
         saveBtn.setBackgroundColor(Color.GREEN);
 
-        // check if notification setting is null
-        if(settings.notificationSetting == -1)
-        {
-            // get the user saved settings
-              // method: getJson()
-            //settings = get_json();
-        }
-
         // check the appropriate button based on the id from the saved data
         radioGrp.check(settings.notificationSetting);
 
@@ -265,4 +251,52 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.report_screen);
     }
 
+    // runs when navigated to group screen
+    public void inGroupNavigate(View view){
+
+        int index;
+
+        // set the content view
+        setContentView(R.layout.in_group_screen);
+
+        // initialize a new group
+        Group thisGroup = new Group(1234);
+
+        thisGroup.addExpense(15, "4/16/2022", "Mcdoonals Borger", "yumm.");
+        thisGroup.addExpense(100, "3/16/2022", "Hooker", "yumm.");
+        thisGroup.addExpense(159.23, "2/20/2022", "Cocaine", "yumm.");
+        thisGroup.addExpense(20030, "1/20/2022", "TESLA MOTHER FUCKER", "yumm.");
+
+        for(index = 0; index < thisGroup.expenseList.size(); index++)
+        {
+            TextView text = new TextView(this);
+            if (index % 2 == 0)
+            {
+                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.GRAY, text);
+            }
+            else
+            {
+                createExpenseXMLElement(thisGroup.expenseList.get(index), Color.LTGRAY, text);
+            }
+        }
+    }
+
+    public void createExpenseXMLElement(Expense expense, int color, TextView text)
+    {
+        LinearLayout groupScreen = (LinearLayout) findViewById(R.id.groupExpenses);
+        text.setText(expense.name + " - " + expense.amount + " - " + expense.date);
+        text.setBackgroundColor(color);
+        text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        text.setTextSize(18);
+        text.setHeight(200);
+        groupScreen.addView(text);
+    }
+
+    public void AddExpense()
+    {
+        Context ctx = getApplicationContext();
+        Expenses expnses = new Expenses(ctx);
+
+        expnses.addExpense();
+    }
 }
