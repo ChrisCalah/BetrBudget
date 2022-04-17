@@ -5,16 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/ToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="179dp"
+        android:background="#172413"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HomeButton">
+
+        <ImageButton
+            android:id="@+id/HomeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/btn_star_big_off"
+            tools:srcCompat="@drawable/homebutton" />
+
+        <ImageButton
+            android:id="@+id/GroupButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="groupNavigate"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_dialog_email"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/groupbutton" />
+
+        <ImageButton
+            android:id="@+id/ReportButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="reportNavigate"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_menu_view"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/reportbutton" />
+
+        <ImageButton
+            android:id="@+id/groupBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="expenseNavigate"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_menu_myplaces"
+            tools:srcCompat="@drawable/expensebutton" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="settingsNavigate"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_menu_preferences"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/settingsbutton" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/groupFAQ"
         android:layout_width="336dp"
         android:layout_height="114dp"
-        android:layout_marginBottom="50dp"
         android:text="Group FAQ"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="512dp" />
 
     <Button
         android:id="@+id/joinGroup"
@@ -37,59 +102,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#9D12F3"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/homeBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="homeNavigate"
-            app:srcCompat="@android:drawable/btn_star_big_off" />
-
-        <ImageButton
-            android:id="@+id/reportBtn"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="groupNavigate"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
-
-        <ImageButton
-            android:id="@+id/expenseBtn"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="reportNavigate"
-            app:srcCompat="@android:drawable/ic_menu_view" />
-
-        <ImageButton
-            android:id="@+id/groupBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="expenseNavigate"
-            app:srcCompat="@android:drawable/ic_menu_myplaces" />
-
-        <ImageButton
-            android:id="@+id/settingsBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="settingsNavigate"
-            app:srcCompat="@android:drawable/ic_menu_preferences"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
