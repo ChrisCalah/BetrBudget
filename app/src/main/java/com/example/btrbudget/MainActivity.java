@@ -64,7 +64,7 @@ import java.util.*;
 public class MainActivity extends AppCompatActivity {
 
     //create PieChart instance/object
-    private Group thisGroup = new Group(1234);;
+    private Group thisGroup = new Group(1234);
     private PieChart pieChart;
     private UserSettings settings = new UserSettings();
 
@@ -252,8 +252,9 @@ public class MainActivity extends AppCompatActivity {
                 saveBtn.setBackgroundColor(Color.GREEN);
 
                 // Set Intent for notification to pop up
-                Intent intent = new Intent( MainActivity.this, Notifications.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, 0 );
+                Intent intent = new Intent( MainActivity.this, Notifications.class)
+                        .addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE );
 
                 // Make alarm manager to give notification at correct time
                 AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE );
@@ -263,21 +264,10 @@ public class MainActivity extends AppCompatActivity {
 
                 long notifInterval;
 
-                // Check when notifs are wanted
-                if( = "daily")
-                {
-                    notifInterval = 1000 * 10;
-                }
-                else if( = "weekly")
-                {
-                    notifInterval = 1000 * 60 * 60 * 24 * 7;
-                }
-                else if( = "monthly")
-                {
-                    // Set notif interval to monthly
-                    notifInterval = 1000 * 60 * 60 * 24 * 30;
-                }
+                // time in miliseconds (10 seconds)
+                notifInterval = 1000 * 10;
 
+                // Set notif to appear after said amount of time
                 alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + notifInterval, pendingIntent );
             }
         });
