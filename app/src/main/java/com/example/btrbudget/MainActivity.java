@@ -19,21 +19,17 @@ limitations under the License.
 
 package com.example.btrbudget;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,6 +38,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -59,7 +57,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -252,8 +250,8 @@ public class MainActivity extends AppCompatActivity {
                 saveBtn.setBackgroundColor(Color.GREEN);
 
                 // Set Intent for notification to pop up
-                Intent intent = new Intent( MainActivity.this, Notifications.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, 0 );
+                Intent intent = new Intent( MainActivity.this, Notification.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
                 // Make alarm manager to give notification at correct time
                 AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE );
@@ -264,15 +262,15 @@ public class MainActivity extends AppCompatActivity {
                 long notifInterval;
 
                 // Check when notifs are wanted
-                if( = "daily")
+                if(settings.notificationSetting == R.id.daily)
                 {
                     notifInterval = 1000 * 10;
                 }
-                else if( = "weekly")
+                else if(settings.notificationSetting == R.id.weekly)
                 {
                     notifInterval = 1000 * 60 * 60 * 24 * 7;
                 }
-                else if( = "monthly")
+                else
                 {
                     // Set notif interval to monthly
                     notifInterval = 1000 * 60 * 60 * 24 * 30;
