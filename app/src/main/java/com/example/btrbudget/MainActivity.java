@@ -21,9 +21,15 @@ package com.example.btrbudget;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -66,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Create channel for notifications
+           // Method: Notification Channel
+        createNotificationChannel();
 
         //load default class values
         pieChart = findViewById(R.id.activity_main_piechart);
@@ -240,6 +250,35 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // change save button to green
                 saveBtn.setBackgroundColor(Color.GREEN);
+
+                // Set Intent for notification to pop up
+                Intent intent = new Intent( MainActivity.this, Notifications.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, 0 );
+
+                // Make alarm manager to give notification at correct time
+                AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE );
+
+                // Get time when button is clicked
+                long timeAtButtonClick = System.currentTimeMillis();
+
+                long notifInterval;
+
+                // Check when notifs are wanted
+                if( = "daily")
+                {
+                    notifInterval = 1000 * 10;
+                }
+                else if( = "weekly")
+                {
+                    notifInterval = 1000 * 60 * 60 * 24 * 7;
+                }
+                else if( = "monthly")
+                {
+                    // Set notif interval to monthly
+                    notifInterval = 1000 * 60 * 60 * 24 * 30;
+                }
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + notifInterval, pendingIntent );
             }
         });
     }
@@ -333,5 +372,25 @@ public class MainActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
+    }
+
+    public void createNotificationChannel()
+    {
+        // Make sure notifications are possible
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            // Set data for channel
+            CharSequence name = "notifyChannel";
+            String description = "Channel for budget notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            // Create notification channel object
+            NotificationChannel channel = new NotificationChannel( "notify", name, importance);
+            channel.setDescription( description );
+
+            // Create notification channel
+            NotificationManager notificationManager = getSystemService( NotificationManager.class );
+            notificationManager.createNotificationChannel( channel );
+        }
     }
 }

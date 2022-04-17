@@ -30,6 +30,8 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+
+        <receiver android:name=".notify"/>
     </application>
 
 </manifest>
