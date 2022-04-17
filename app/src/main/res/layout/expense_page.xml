@@ -2,8 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/expenseList"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/expenseList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPersonalExpense"
+        tools:ignore="DuplicateIds,MissingConstraints,UnknownIdInLayout">
+
+        <LinearLayout
+            android:id="@+id/groupExpenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/ToolBar"
@@ -35,8 +56,8 @@
             android:layout_weight="1"
             android:onClick="groupNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/groupbutton" />
+            app:srcCompat="@drawable/groupbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/ReportButton"
@@ -45,8 +66,8 @@
             android:layout_weight="1"
             android:onClick="reportNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/reportbutton" />
+            app:srcCompat="@drawable/reportbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/groupBtn"
@@ -64,37 +85,35 @@
             android:layout_weight="1"
             android:onClick="settingsNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/settingsbutton" />
+            app:srcCompat="@drawable/settingsbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/ExpenseAmmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
         android:text="Enter in Expense Ammount"
-        android:textSize="15dip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ExpenseAmmount"
-        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addPersonalExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="AddExpense"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="478dp"
+        android:onClick="onButtonShowPopupWindowClick"
         android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/ToolBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/ExpenseAmmount" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,6 @@
 package com.example.btrbudget;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.sax.Element;
-import android.text.Layout;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +9,10 @@ import java.util.ArrayList;
 public class Group extends AppCompatActivity {
 
     // define member variables
+    private int groupID;
     private int ownerID;
     private LinearLayout groupScreen;
+    public ArrayList<Integer> memberList = new ArrayList<Integer>();
     public ArrayList<Expense> expenseList = new ArrayList<Expense>();
 
     public Group(int owner) {
@@ -33,5 +29,10 @@ public class Group extends AppCompatActivity {
 
     public void addExpense(Expense newExp) {
         expenseList.add(newExp);
+    }
+
+    public void getGroupID()
+    {
+
     }
 }
