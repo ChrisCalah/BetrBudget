@@ -264,8 +264,25 @@ public class MainActivity extends AppCompatActivity {
 
                 long notifInterval;
 
-                // time in miliseconds (10 seconds)
-                notifInterval = 1000 * 10;
+                // Check when user wants to see the notification
+                   // Daily
+                   if(settings.notificationSetting == R.id.daily)
+                   {
+                       // Set notification to appear in a day (in millis)
+                       notifInterval = 1000 * 60 * 60 * 24;
+                   }
+                   // Weekly
+                   else if(settings.notificationSetting == R.id.weekly)
+                   {
+                       // Set notification to appear in a week (in millis)
+                       notifInterval = 1000 * 60 * 60 * 24 * 7;
+                   }
+                   // Monthly
+                   else
+                   {
+                       // Set notification to appear in a month (in millis)
+                       notifInterval = (long)1000 * 60 * 60 * 24 * 30;
+                   }
 
                 // Set notif to appear after said amount of time
                 alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + notifInterval, pendingIntent );
