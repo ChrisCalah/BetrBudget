@@ -19,21 +19,16 @@ limitations under the License.
 
 package com.example.btrbudget;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,6 +37,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -59,7 +56,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -365,7 +363,8 @@ public class MainActivity extends AppCompatActivity {
                 EditText editDate = (EditText)popupView.findViewById(R.id.editDate);
                 Expense newExp = new Expense(Double.parseDouble(editAmt.getText().toString()),
                         editDate.getText().toString(), editName.getText().toString());
-                thisGroup.addExpense(newExp);
+                settings.addExpense(newExp);
+                //thisGroup.addExpense(newExp);
 
                 if (thisGroup.expenseList.size() % 2 == 0)
                 {
