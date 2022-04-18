@@ -32,6 +32,15 @@
         <entry key="..\:/Users/fun10/BetrBudget/app/src/main/res/drawable/ic_pass.xml" value="0.164" />
         <entry key="..\:/Users/fun10/BetrBudget/app/src/main/res/drawable/ic_user.xml" value="0.164" />
         <entry key="..\:/Users/fun10/BetrBudget/app/src/main/res/layout/options_screen.xml" value="0.22" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/activity_sign_up.xml" value="0.15" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/expense_page.xml" value="0.33" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/expense_popup.xml" value="0.22" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/group_screen.xml" value="0.1" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/in_group_screen.xml" value="0.1" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/options_screen.xml" value="0.22" />
+        <entry key="..\:/Users/samas/StudioProjects/BetrBudget/app/src/main/res/layout/report_screen.xml" value="0.1" />
       </map>
     </option>
   </component>

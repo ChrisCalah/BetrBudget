@@ -3,7 +3,7 @@
     android:id="@+id/popup_layout"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="#62F876">
+    android:backgroundTint="#DADADA">
 
     <TextView
         android:layout_width="wrap_content"

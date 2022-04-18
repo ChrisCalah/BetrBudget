@@ -22,15 +22,15 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="61dp" />
 
-            <TextView
-                android:id="@+id/textView3"
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Budget Report"
-                android:textAlignment="center"
-                app:autoSizeTextType="uniform" />
+                android:layout_height="82dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/budgetreporttitle"
+                tools:srcCompat="@drawable/budgetreporttitle" />
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/activity_main_piechart"
@@ -41,6 +41,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="#28462B"
                 android:text="CashFlow"
                 android:textAlignment="center"
                 app:autoSizeTextType="uniform" />
