@@ -252,15 +252,14 @@ public class MainActivity extends AppCompatActivity {
                 saveBtn.setBackgroundColor(Color.GREEN);
 
                 // Set Intent for notification to pop up
-                Intent intent = new Intent( MainActivity.this, Notifications.class)
-                        .addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE );
+                Intent intent = new Intent( getApplicationContext(), Notifications.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast( MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT );
 
                 // Make alarm manager to give notification at correct time
                 AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE );
 
                 // Get time when button is clicked
-                long timeAtButtonClick = System.currentTimeMillis();
+                Calendar calendar = Calendar.getInstance();
 
                 long notifInterval;
 
@@ -269,23 +268,23 @@ public class MainActivity extends AppCompatActivity {
                    if(settings.notificationSetting == R.id.daily)
                    {
                        // Set notification to appear in a day (in millis)
-                       notifInterval = 1000 * 60 * 60 * 24;
+                       notifInterval = AlarmManager.INTERVAL_DAY;
                    }
                    // Weekly
                    else if(settings.notificationSetting == R.id.weekly)
                    {
                        // Set notification to appear in a week (in millis)
-                       notifInterval = 1000 * 60 * 60 * 24 * 7;
+                       notifInterval = AlarmManager.INTERVAL_DAY * 7;
                    }
                    // Monthly
                    else
                    {
                        // Set notification to appear in a month (in millis)
-                       notifInterval = (long)1000 * 60 * 60 * 24 * 30;
+                       notifInterval = AlarmManager.INTERVAL_DAY * 30;
                    }
 
                 // Set notif to appear after said amount of time
-                alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + notifInterval, pendingIntent );
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), notifInterval, pendingIntent );
             }
         });
     }

@@ -13,9 +13,12 @@ public class Notifications extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        // Make pendingIntent given the context and intent
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE );
+        // Set intent (go to login screen when notif clicked)
+        Intent notifIntent = new Intent(context, Login.class)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notifIntent, PendingIntent.FLAG_UPDATE_CURRENT );
 
+        // Build Notification builder object
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,"notify")
                 // Icon
                 .setSmallIcon(R.drawable.unknown)
@@ -35,5 +38,6 @@ public class Notifications extends BroadcastReceiver {
 
         // Make the notification appear
         notificationManager.notify(200, builder.build() );
+
     }
 }
