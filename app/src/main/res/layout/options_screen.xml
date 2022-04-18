@@ -25,8 +25,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
             android:onClick="homeNavigate"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/homebutton" />
 
         <ImageButton
@@ -36,8 +36,8 @@
             android:layout_weight="1"
             android:onClick="groupNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/groupbutton" />
+            app:srcCompat="@drawable/groupbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/ReportButton"
@@ -46,8 +46,8 @@
             android:layout_weight="1"
             android:onClick="reportNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/reportbutton" />
+            app:srcCompat="@drawable/reportbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/groupBtn"
@@ -65,8 +65,8 @@
             android:layout_weight="1"
             android:onClick="settingsNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/settingsbutton" />
+            app:srcCompat="@drawable/settingsbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
 
@@ -81,8 +81,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="40dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="40dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -113,7 +113,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="130dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="#11FF00"
+        android:background="@color/greenPrimary"
         android:text="Save Settings"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"

@@ -35,8 +35,8 @@
             android:layout_weight="1"
             android:onClick="groupNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/groupbutton" />
+            app:srcCompat="@drawable/groupbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/ReportButton"
@@ -45,8 +45,8 @@
             android:layout_weight="1"
             android:onClick="reportNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/reportbutton" />
+            app:srcCompat="@drawable/reportbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/groupBtn"
@@ -64,8 +64,8 @@
             android:layout_weight="1"
             android:onClick="settingsNavigate"
             android:scaleType="fitCenter"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:srcCompat="@drawable/settingsbutton" />
+            app:srcCompat="@drawable/settingsbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <Button
