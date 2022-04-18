@@ -62,4 +62,27 @@ public class UserSettings extends AppCompatActivity {
             }
         });
     }
+
+    public void getExpenses()
+    {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                String[] field = new String[1];
+                field[0] = "username";
+                String[] data = new String[1];
+                data[0] = name;
+                PutData putData = new PutData("http://54.215.66.149/BetrBudget/getExpenses.php", "POST", field, data);
+                if (putData.startPut()) {
+                    if (putData.onComplete()) {
+                        String result = putData.getResult();
+                        System.out.println("Data:");
+                        System.out.println(result);
+                    }
+                }
+                //End Write and Read data with URL
+            }
+        });
+    }
 }

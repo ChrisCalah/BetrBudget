@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         settings = new UserSettings(userName, 0, -1);
+        settings.getExpenses();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -275,7 +276,8 @@ public class MainActivity extends AppCompatActivity {
                    if(settings.notificationSetting == R.id.daily)
                    {
                        // Set notification to appear in a day (in millis)
-                       notifInterval = AlarmManager.INTERVAL_DAY;
+                       notifInterval = 1000 * 10;
+                       //notifInterval = AlarmManager.INTERVAL_DAY;
                    }
                    // Weekly
                    else if(settings.notificationSetting == R.id.weekly)
@@ -303,7 +305,19 @@ public class MainActivity extends AppCompatActivity {
     }
     public void expenseNavigate(View view)
     {
+        int index;
         setContentView(R.layout.expense_page);
+        for(index = 0; index < settings.expenseList.size(); index++)
+        {
+            if (index % 2 == 0)
+            {
+                createExpenseXMLElement(settings.expenseList.get(index), Color.GRAY);
+            }
+            else
+            {
+                createExpenseXMLElement(settings.expenseList.get(index), Color.LTGRAY);
+            }
+        }
     }
     public void reportNavigate(View view)
     {
@@ -372,16 +386,29 @@ public class MainActivity extends AppCompatActivity {
                 EditText editDate = (EditText)popupView.findViewById(R.id.editDate);
                 Expense newExp = new Expense(Double.parseDouble(editAmt.getText().toString()),
                         editDate.getText().toString(), editName.getText().toString());
-                settings.addExpense(newExp);
-                //thisGroup.addExpense(newExp);
-
-                if (thisGroup.expenseList.size() % 2 == 0)
+                if (view.getId() == R.id.addExpense)
                 {
-                    createExpenseXMLElement(newExp, Color.GRAY);
+                    thisGroup.addExpense(newExp);
+                    if (thisGroup.expenseList.size() % 2 == 0)
+                    {
+                        createExpenseXMLElement(newExp, Color.GRAY);
+                    }
+                    else
+                    {
+                        createExpenseXMLElement(newExp, Color.LTGRAY);
+                    }
                 }
                 else
                 {
-                    createExpenseXMLElement(newExp, Color.LTGRAY);
+                    settings.addExpense(newExp);
+                    if (settings.expenseList.size() % 2 == 0)
+                    {
+                        createExpenseXMLElement(newExp, Color.GRAY);
+                    }
+                    else
+                    {
+                        createExpenseXMLElement(newExp, Color.LTGRAY);
+                    }
                 }
                 popupWindow.dismiss();
             }
