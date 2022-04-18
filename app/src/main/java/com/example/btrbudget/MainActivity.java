@@ -64,10 +64,19 @@ public class MainActivity extends AppCompatActivity {
     //create PieChart instance/object
     private Group thisGroup = new Group(1234);
     private PieChart pieChart;
-    private UserSettings settings = new UserSettings();
+    private UserSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String userName = "Anonymous User";
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            userName = extras.getString("username");
+        }
+
+        settings = new UserSettings(userName, 0, -1);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
