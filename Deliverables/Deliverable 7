@@ -1,1 +1,20 @@
+# Introduction
+
+As college students start growing out of dependencies on their parents, one of the most important lessons to be taught is financial responsibility.
+There are many ways to keep track of a budget but it can be confusing to the point of deferring the user. With BetrBudget, a simple and valuable budgeting app,
+the user is opened up to the world of finances in the form of a simplistic design, without the intimidating features that most students wouldn't understand how
+to use anyways. Unlike other apps, curating to college students and younger audiences is something that is taken seriously. Not only is there a simpler easier to
+understand design, but also features that specifically curate towards people with lower incomes that typically live in roommate environments. By using BetrBudget,
+keeping financially organized without putting in lots of research and time into learning how to budget is possible and being newly independent is a lot easier.
+
+Our app also will allow us to create groups where multiple registered users can track shared expenses together. 
+This will mostly be intended for shared periodic expenses between the members of the group, such as rent or a shared subscription service. 
+Each group member will have their own permissions level (admin, edit, view) which can be set by the group owner (or those with 'admin' permissions). 
+Admin will also allow you to kick/add members to the group at any time. Edit will allow the member to manage expenses for the group, but not manage the members. 
+View will only allow the member to see and receive notifications from the shared budget. Notifications for expenses will be sent out to everyone in 
+the group for the group expenses just like with any other periodic expense. Registered users have the ability to log income and keep track of the period, 
+amount, and type with the option to change details as needed. Each registered user will have access to their own settings allowing them to view and change 
+various options related to their in app experience, like notification choices and a view of their lifetime savings. Periodic Expenses are linked to different 
+attributes that can change how their data is viewed. This is done with an enumerated period of time of either daily, weekly, monthly, and never.
+https://trello.com/b/sApKl3jb/betrbudget https://github.com/ChrisCalah/BetrBudget
 
